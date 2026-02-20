@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VINDICO Claim Management &ndash; &Uuml;ber uns</title>
-    <meta name="description" content="VINDICO ist ein Forderungsaufk&auml;ufer f&uuml;r strittige Schadensersatzforderungen. Gegr&uuml;ndet von Thomas Kiene.">
+    <title>Factoring abgelehnt – strittige Forderungen verkaufen | VINDICO Claim Management</title>
+    <meta name="description" content="Factoring kauft nur unstrittige Forderungen. VINDICO kauft strittige Schadensersatzanspr&uuml;che. Sofortige Auszahlung, kein R&uuml;ckgriffsrisiko.">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://vindico-claims.de/ueber-uns">
+    <link rel="canonical" href="https://vindico-claims.de/factoring-abgelehnt">
     <link rel="stylesheet" href="/fonts/fonts.css">
     <style>
         :root {
@@ -122,7 +122,7 @@
         /* === HERO === */
         .hero {
             position: relative;
-            min-height: 60vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -164,20 +164,63 @@
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
             font-weight: 500;
             color: var(--white);
-            line-height: 1.15;
-            margin-bottom: 1rem;
+            line-height: 1.2;
+            margin-bottom: 1.75rem;
             opacity: 0;
             animation: fadeUp 0.8s ease forwards 0.4s;
         }
 
-        .hero-subtitle {
+        .hero h1 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-text {
             font-size: 1.15rem;
+            line-height: 1.75;
             color: var(--mist);
+            max-width: 600px;
+            margin-bottom: 3rem;
             opacity: 0;
             animation: fadeUp 0.8s ease forwards 0.6s;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.25rem;
+            background: var(--gold);
+            color: var(--ink);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.35s ease;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.8s;
+        }
+
+        .hero-cta:hover {
+            background: var(--gold-light);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 30px rgba(201, 168, 76, 0.2);
+        }
+
+        .hero-cta svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s;
+        }
+
+        .hero-cta:hover svg {
+            transform: translateX(3px);
         }
 
         /* === DIVIDER === */
@@ -228,40 +271,106 @@
             max-width: 700px;
         }
 
-        /* === NICHT-GRID === */
-        .nicht-grid {
+        /* === COMPARISON TABLE === */
+        .comparison {
+            margin-top: 3rem;
+            border: 1px solid rgba(201, 168, 76, 0.1);
+            overflow: hidden;
+        }
+
+        .comparison-row {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1px;
-            background: rgba(201, 168, 76, 0.08);
-            margin-top: 2rem;
+            grid-template-columns: 1fr 1fr 1fr;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.06);
         }
 
-        .nicht-card {
-            background: var(--ink);
-            padding: 2rem 1.75rem;
-            transition: background 0.4s;
+        .comparison-row:last-child {
+            border-bottom: none;
         }
 
-        .nicht-card:hover {
+        .comparison-row--header {
             background: var(--slate);
         }
 
-        .nicht-card h3 {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--white);
-            margin-bottom: 0.6rem;
+        .comparison-cell {
+            padding: 1rem 1.25rem;
+            font-size: 0.9rem;
+            color: var(--cloud);
+            line-height: 1.5;
         }
 
-        .nicht-card p {
-            font-size: 0.88rem;
+        .comparison-cell:not(:last-child) {
+            border-right: 1px solid rgba(201, 168, 76, 0.06);
+        }
+
+        .comparison-cell--label {
+            font-weight: 600;
+            color: var(--white);
+            font-size: 0.85rem;
+        }
+
+        .comparison-row--header .comparison-cell {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold-dim);
+            padding: 0.85rem 1.25rem;
+        }
+
+        .comparison-cell--negative {
+            color: var(--mist);
+        }
+
+        .comparison-cell--positive {
+            color: var(--gold);
+        }
+
+        /* === PROCESS === */
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .process-step {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.06);
+        }
+
+        .process-step:last-child {
+            border-bottom: none;
+        }
+
+        .step-marker {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--gold-dim);
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            color: var(--gold);
+        }
+
+        .step-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.4rem;
+        }
+
+        .step-content p {
+            font-size: 0.9rem;
             color: var(--mist);
             line-height: 1.65;
         }
 
-        /* === CTA === */
+        /* === CTA SECTION === */
         .cta-section {
             padding: 6rem 2rem;
             position: relative;
@@ -406,8 +515,35 @@
                 padding: 4rem 1.5rem;
             }
 
-            .nicht-grid {
+            .comparison-row {
                 grid-template-columns: 1fr;
+            }
+
+            .comparison-cell:not(:last-child) {
+                border-right: none;
+                border-bottom: 1px solid rgba(201, 168, 76, 0.04);
+            }
+
+            .comparison-row--header {
+                display: none;
+            }
+
+            .comparison-cell::before {
+                display: block;
+                font-size: 0.65rem;
+                font-weight: 600;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--gold-dim);
+                margin-bottom: 0.25rem;
+            }
+
+            .comparison-row:not(.comparison-row--header) .comparison-cell:nth-child(1)::before { content: 'Kriterium'; }
+            .comparison-row:not(.comparison-row--header) .comparison-cell:nth-child(2)::before { content: 'Factoring'; }
+            .comparison-row:not(.comparison-row--header) .comparison-cell:nth-child(3)::before { content: 'VINDICO'; }
+
+            .process-step {
+                gap: 1.25rem;
             }
 
             .cta-section {
@@ -430,8 +566,8 @@
             <a href="/" class="logo">VINDICO<span>.</span></a>
             <nav class="header-nav">
                 <a href="/">Startseite</a>
-                <a href="/ueber-uns" class="active">&Uuml;ber uns</a>
-                <a href="/factoring-abgelehnt">Factoring-Alternative</a>
+                <a href="/ueber-uns">&Uuml;ber uns</a>
+                <a href="/factoring-abgelehnt" class="active">Factoring-Alternative</a>
             </nav>
         </div>
         <div class="header-contact">
@@ -442,48 +578,68 @@
     <!-- HERO -->
     <section class="hero">
         <div class="hero-inner">
-            <div class="hero-tag">&Uuml;ber uns</div>
-            <h1>Thomas Kiene</h1>
-            <p class="hero-subtitle">Gr&uuml;nder &amp; Gesch&auml;ftsf&uuml;hrer</p>
+            <div class="hero-tag">Factoring-Alternative</div>
+            <h1>Klassisches Factoring kauft unstrittige Forderungen. <em>Wir kaufen das Gegenteil.</em></h1>
+            <p class="hero-text">
+                VINDICO erwirbt strittige Schadensersatzforderungen &ndash; genau dort wo Factoring aufh&ouml;rt.
+            </p>
+            <a href="mailto:kontakt@vindico-claims.de" class="hero-cta">
+                Anfrage stellen
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </a>
         </div>
     </section>
 
     <div class="divider"></div>
 
-    <!-- WAS VINDICO IST -->
+    <!-- WARUM FACTORING ABLEHNT -->
     <section class="section">
         <div class="section-inner">
-            <div class="section-label">Das Unternehmen</div>
-            <h2 class="section-title">Was VINDICO ist</h2>
+            <div class="section-label">Das Problem</div>
+            <h2 class="section-title">Warum Factoring strittige Forderungen ablehnt</h2>
             <p class="section-text">
-                VINDICO ist ein Forderungsaufk&auml;ufer. Wir erwerben strittige Schadensersatzforderungen nach &sect;&sect;&nbsp;398, 453 BGB. Der Verk&auml;ufer erh&auml;lt sofortige Liquidit&auml;t. Wir werden Forderungsinhaber und setzen den Anspruch auf eigenes Risiko durch.
+                Klassisches Factoring funktioniert nur bei unstrittigen, dokumentierten Rechnungen. Sobald die Gegenseite den Anspruch bestreitet oder reklamiert &ndash; Ablehnung. Schadensersatzanspr&uuml;che sind per Definition strittig und damit nie factoringf&auml;hig. Das Ergebnis: Unternehmen bleiben auf ihrer Forderung sitzen.
             </p>
         </div>
     </section>
 
     <div class="divider"></div>
 
-    <!-- WAS VINDICO NICHT IST -->
+    <!-- VERGLEICHSTABELLE -->
     <section class="section section--alt">
         <div class="section-inner">
-            <div class="section-label">Abgrenzung</div>
-            <h2 class="section-title">Was VINDICO nicht ist</h2>
-            <div class="nicht-grid">
-                <div class="nicht-card">
-                    <h3>Kein Inkasso</h3>
-                    <p>Wir treiben keine fremden Forderungen ein.</p>
+            <div class="section-label">Vergleich</div>
+            <h2 class="section-title">Factoring vs. VINDICO</h2>
+            <div class="comparison">
+                <div class="comparison-row comparison-row--header">
+                    <div class="comparison-cell">Kriterium</div>
+                    <div class="comparison-cell">Factoring</div>
+                    <div class="comparison-cell">VINDICO</div>
                 </div>
-                <div class="nicht-card">
-                    <h3>Kein Factoring</h3>
-                    <p>Wir kaufen keine unstrittigen Rechnungen.</p>
+                <div class="comparison-row">
+                    <div class="comparison-cell comparison-cell--label">Forderungsart</div>
+                    <div class="comparison-cell comparison-cell--negative">Nur unstrittig</div>
+                    <div class="comparison-cell comparison-cell--positive">Strittig &#10003;</div>
                 </div>
-                <div class="nicht-card">
-                    <h3>Keine Rechtsberatung</h3>
-                    <p>F&uuml;r rechtliche Fragen empfehlen wir Fachanw&auml;lte.</p>
+                <div class="comparison-row">
+                    <div class="comparison-cell comparison-cell--label">Schadensersatz</div>
+                    <div class="comparison-cell comparison-cell--negative">Nicht m&ouml;glich</div>
+                    <div class="comparison-cell comparison-cell--positive">Kerngesch&auml;ft &#10003;</div>
                 </div>
-                <div class="nicht-card">
-                    <h3>Keine Versicherung</h3>
-                    <p>Wir sind kein Risikotr&auml;ger f&uuml;r k&uuml;nftige Sch&auml;den.</p>
+                <div class="comparison-row">
+                    <div class="comparison-cell comparison-cell--label">Bereits abgelehnte F&auml;lle</div>
+                    <div class="comparison-cell comparison-cell--negative">Ausgeschlossen</div>
+                    <div class="comparison-cell comparison-cell--positive">Kein Problem &#10003;</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell comparison-cell--label">Risiko f&uuml;r Verk&auml;ufer</div>
+                    <div class="comparison-cell comparison-cell--negative">Teilweise (R&uuml;ckgriff)</div>
+                    <div class="comparison-cell comparison-cell--positive">Keines &#10003;</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell comparison-cell--label">Auszahlung</div>
+                    <div class="comparison-cell comparison-cell--negative">Nach Pr&uuml;fung</div>
+                    <div class="comparison-cell comparison-cell--positive">Sofort nach Abtretung &#10003;</div>
                 </div>
             </div>
         </div>
@@ -491,14 +647,47 @@
 
     <div class="divider"></div>
 
-    <!-- WER DAHINTER STEHT -->
+    <!-- WAS WIR KAUFEN -->
     <section class="section">
         <div class="section-inner">
-            <div class="section-label">Gr&uuml;nder</div>
-            <h2 class="section-title">Wer dahinter steht</h2>
+            <div class="section-label">Unser Ansatz</div>
+            <h2 class="section-title">Was wir kaufen</h2>
             <p class="section-text">
-                Ich bin Unternehmer. Seit 2013 in der Logistikbranche, Gesch&auml;ftsf&uuml;hrer mehrerer eCommerce-Unternehmen. Ich kenne Schadensregulierung aus der Praxis &ndash; nicht aus dem Lehrbuch. VINDICO ist mein Werkzeug um das Ungleichgewicht zwischen Gesch&auml;digten und Schuldnern zu korrigieren.
+                Wir erwerben strittige Schadensersatzanspr&uuml;che nach &sect;&sect;&nbsp;398, 453 BGB &ndash; als Einzelfall, ohne Rahmenvertrag, ohne Dauerschuldverh&auml;ltnis. Transportsch&auml;den, Bausch&auml;den, Handwerkersch&auml;den. National und international.
             </p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- SO FUNKTIONIERT ES -->
+    <section class="section section--alt">
+        <div class="section-inner">
+            <div class="section-label">So funktioniert es</div>
+            <h2 class="section-title">Drei Schritte. Kein Risiko.</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-marker">1</div>
+                    <div class="step-content">
+                        <h4>Fall einreichen</h4>
+                        <p>Schildern Sie uns Ihren Schadensfall per E-Mail. Schadensdokumentation, Belege und Schadenwert gen&uuml;gen f&uuml;r eine erste Einsch&auml;tzung.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-marker">2</div>
+                    <div class="step-content">
+                        <h4>Angebot erhalten</h4>
+                        <p>Innerhalb von 48 Stunden erhalten Sie ein verbindliches Kaufangebot f&uuml;r Ihre Forderung. Transparent, ohne versteckte Kosten.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-marker">3</div>
+                    <div class="step-content">
+                        <h4>Sofort ausgezahlt</h4>
+                        <p>Nach Unterzeichnung der Abtretung &uuml;berweisen wir den Kaufpreis. Sie sind raus &ndash; wir k&uuml;mmern uns um den Rest.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
