@@ -66,15 +66,41 @@
             border-bottom: 1px solid rgba(201, 168, 76, 0.08);
         }
 
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
         .logo {
             font-family: 'Playfair Display', serif;
             font-size: 1.35rem;
             font-weight: 600;
             letter-spacing: 0.15em;
             color: var(--white);
+            text-decoration: none;
         }
 
         .logo span {
+            color: var(--gold);
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 1.75rem;
+        }
+
+        .header-nav a {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            color: var(--mist);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .header-nav a:hover,
+        .header-nav a.active {
             color: var(--gold);
         }
 
@@ -452,8 +478,22 @@
                 padding: 1rem 1.25rem;
             }
 
+            .header-left {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
             .logo {
                 font-size: 1.1rem;
+            }
+
+            .header-nav {
+                gap: 1rem;
+            }
+
+            .header-nav a {
+                font-size: 0.7rem;
             }
 
             .header-contact {
@@ -501,7 +541,13 @@
 
     <!-- HEADER -->
     <header>
-        <div class="logo">VINDICO<span>.</span></div>
+        <div class="header-left">
+            <a href="/" class="logo">VINDICO<span>.</span></a>
+            <nav class="header-nav">
+                <a href="/" class="active">Startseite</a>
+                <a href="/ueber-uns">&Uuml;ber uns</a>
+            </nav>
+        </div>
         <div class="header-contact">
             <a href="tel:+4954339145172">05433 9145172</a> &nbsp;&middot;&nbsp; <a href="mailto:kontakt@vindico-claims.de">kontakt@vindico-claims.de</a>
         </div>

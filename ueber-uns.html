@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VINDICO Claim Management &ndash; &Uuml;ber uns</title>
+    <meta name="description" content="VINDICO ist ein Forderungsaufk&auml;ufer f&uuml;r strittige Schadensersatzforderungen. Gegr&uuml;ndet von Thomas Kiene.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://vindico-claims.de/ueber-uns">
+    <link rel="stylesheet" href="/fonts/fonts.css">
+    <style>
+        :root {
+            --ink: #0a0f1a;
+            --slate: #1a2035;
+            --steel: #2d3554;
+            --mist: #8891a5;
+            --cloud: #c8cdd8;
+            --snow: #f0f2f5;
+            --white: #ffffff;
+            --gold: #c9a84c;
+            --gold-light: #dfc06a;
+            --gold-dim: #a68a3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--ink);
+            color: var(--cloud);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* === HEADER === */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 15, 26, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 1.75rem;
+        }
+
+        .header-nav a {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            color: var(--mist);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .header-nav a:hover,
+        .header-nav a.active {
+            color: var(--gold);
+        }
+
+        .header-contact {
+            font-size: 0.85rem;
+            color: var(--mist);
+            letter-spacing: 0.03em;
+        }
+
+        .header-contact a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .header-contact a:hover {
+            color: var(--gold-light);
+        }
+
+        /* === HERO === */
+        .hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--gold-dim);
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.2s;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 500;
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.4s;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--mist);
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.6s;
+        }
+
+        /* === DIVIDER === */
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.15), transparent);
+        }
+
+        /* === SECTIONS === */
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section--alt {
+            background: var(--slate);
+        }
+
+        .section-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold-dim);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: 500;
+            color: var(--white);
+            margin-bottom: 2rem;
+            line-height: 1.25;
+        }
+
+        .section-text {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--mist);
+            max-width: 700px;
+        }
+
+        /* === NICHT-GRID === */
+        .nicht-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: rgba(201, 168, 76, 0.08);
+            margin-top: 2rem;
+        }
+
+        .nicht-card {
+            background: var(--ink);
+            padding: 2rem 1.75rem;
+            transition: background 0.4s;
+        }
+
+        .nicht-card:hover {
+            background: var(--slate);
+        }
+
+        .nicht-card h3 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.6rem;
+        }
+
+        .nicht-card p {
+            font-size: 0.88rem;
+            color: var(--mist);
+            line-height: 1.65;
+        }
+
+        /* === CTA === */
+        .cta-section {
+            padding: 6rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.25rem;
+            background: var(--gold);
+            color: var(--ink);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.35s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--gold-light);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 30px rgba(201, 168, 76, 0.2);
+        }
+
+        .cta-button svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover svg {
+            transform: translateX(3px);
+        }
+
+        .cta-sub {
+            margin-top: 1.25rem;
+            font-size: 0.9rem;
+            color: var(--mist);
+        }
+
+        .cta-sub a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .cta-sub a:hover {
+            color: var(--gold-light);
+        }
+
+        /* === FOOTER === */
+        footer {
+            padding: 2rem;
+            border-top: 1px solid rgba(201, 168, 76, 0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: var(--steel);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.75rem;
+        }
+
+        .footer-links a {
+            font-size: 0.75rem;
+            color: var(--mist);
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 1.25rem;
+            }
+
+            .header-left {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .header-nav {
+                gap: 1rem;
+            }
+
+            .header-nav a {
+                font-size: 0.7rem;
+            }
+
+            .header-contact {
+                display: none;
+            }
+
+            .hero {
+                padding: 7rem 1.5rem 3rem;
+                min-height: auto;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .nicht-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 4rem 1.5rem;
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-left">
+            <a href="/" class="logo">VINDICO<span>.</span></a>
+            <nav class="header-nav">
+                <a href="/">Startseite</a>
+                <a href="/ueber-uns" class="active">&Uuml;ber uns</a>
+            </nav>
+        </div>
+        <div class="header-contact">
+            <a href="tel:+4954339145172">05433 9145172</a> &nbsp;&middot;&nbsp; <a href="mailto:kontakt@vindico-claims.de">kontakt@vindico-claims.de</a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-tag">&Uuml;ber uns</div>
+            <h1>Thomas Kiene</h1>
+            <p class="hero-subtitle">Gr&uuml;nder &amp; Gesch&auml;ftsf&uuml;hrer</p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- WAS VINDICO IST -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="section-label">Das Unternehmen</div>
+            <h2 class="section-title">Was VINDICO ist</h2>
+            <p class="section-text">
+                VINDICO ist ein Forderungsaufk&auml;ufer. Wir erwerben strittige Schadensersatzforderungen nach &sect;&sect;&nbsp;398, 453 BGB. Der Verk&auml;ufer erh&auml;lt sofortige Liquidit&auml;t. Wir werden Forderungsinhaber und setzen den Anspruch auf eigenes Risiko durch.
+            </p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- WAS VINDICO NICHT IST -->
+    <section class="section section--alt">
+        <div class="section-inner">
+            <div class="section-label">Abgrenzung</div>
+            <h2 class="section-title">Was VINDICO nicht ist</h2>
+            <div class="nicht-grid">
+                <div class="nicht-card">
+                    <h3>Kein Inkasso</h3>
+                    <p>Wir treiben keine fremden Forderungen ein.</p>
+                </div>
+                <div class="nicht-card">
+                    <h3>Kein Factoring</h3>
+                    <p>Wir kaufen keine unstrittigen Rechnungen.</p>
+                </div>
+                <div class="nicht-card">
+                    <h3>Keine Rechtsberatung</h3>
+                    <p>F&uuml;r rechtliche Fragen empfehlen wir Fachanw&auml;lte.</p>
+                </div>
+                <div class="nicht-card">
+                    <h3>Keine Versicherung</h3>
+                    <p>Wir sind kein Risikotr&auml;ger f&uuml;r k&uuml;nftige Sch&auml;den.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- WER DAHINTER STEHT -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="section-label">Gr&uuml;nder</div>
+            <h2 class="section-title">Wer dahinter steht</h2>
+            <p class="section-text">
+                Ich bin Unternehmer. Seit 2013 in der Logistikbranche, Gesch&auml;ftsf&uuml;hrer mehrerer eCommerce-Unternehmen. Ich kenne Schadensregulierung aus der Praxis &ndash; nicht aus dem Lehrbuch. VINDICO ist mein Werkzeug um das Ungleichgewicht zwischen Gesch&auml;digten und Schuldnern zu korrigieren.
+            </p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-inner">
+            <div class="section-label">Kontakt</div>
+            <h2 class="section-title">Anfrage stellen</h2>
+            <a href="mailto:kontakt@vindico-claims.de" class="cta-button">
+                kontakt@vindico-claims.de
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </a>
+            <p class="cta-sub">oder telefonisch: <a href="tel:+4954339145172">05433 9145172</a></p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-copy">&copy; 2026 VINDICO Claim Management UG (haftungsbeschr&auml;nkt)</div>
+        <div class="footer-links">
+            <a href="/impressum.html">Impressum</a>
+            <a href="/datenschutz.html">Datenschutz</a>
+            <a href="/agb.html">AGB</a>
+        </div>
+    </footer>
+
+</body>
+</html>
