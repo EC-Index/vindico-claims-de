@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anfrage erhalten – VINDICO Claim Management</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="/fonts/fonts.css">
+    <style>
+        :root {
+            --ink: #0a0f1a;
+            --slate: #1a2035;
+            --steel: #2d3554;
+            --mist: #8891a5;
+            --cloud: #c8cdd8;
+            --white: #ffffff;
+            --gold: #c9a84c;
+            --gold-light: #dfc06a;
+            --gold-dim: #a68a3a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--ink);
+            color: var(--cloud);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 15, 26, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo span { color: var(--gold); }
+
+        .header-contact {
+            font-size: 0.85rem;
+            color: var(--mist);
+        }
+
+        .header-contact a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .main {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .main::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .check {
+            width: 64px;
+            height: 64px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards 0.2s;
+        }
+
+        .check svg {
+            width: 28px;
+            height: 28px;
+            color: var(--gold);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 500;
+            color: var(--white);
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards 0.4s;
+        }
+
+        .subtitle {
+            font-size: 1.15rem;
+            color: var(--mist);
+            max-width: 500px;
+            line-height: 1.75;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards 0.6s;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            transition: color 0.3s;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards 0.8s;
+        }
+
+        .back-link:hover { color: var(--gold-light); }
+
+        footer {
+            padding: 2rem;
+            border-top: 1px solid rgba(201, 168, 76, 0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-copy { font-size: 0.75rem; color: var(--steel); }
+
+        .footer-links { display: flex; gap: 1.75rem; }
+
+        .footer-links a {
+            font-size: 0.75rem;
+            color: var(--mist);
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover { color: var(--gold); }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 1rem 1.25rem; }
+            .logo { font-size: 1.1rem; }
+            .header-contact { display: none; }
+            .main { padding: 7rem 1.5rem 3rem; }
+            footer { flex-direction: column; text-align: center; padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="logo">VINDICO<span>.</span></a>
+        <div class="header-contact">
+            <a href="tel:+4954339145172">05433 9145172</a> &nbsp;&middot;&nbsp; <a href="mailto:kontakt@vindico-claims.de">kontakt@vindico-claims.de</a>
+        </div>
+    </header>
+
+    <div class="main">
+        <div class="check">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <h1>Anfrage erhalten.</h1>
+        <p class="subtitle">Vielen Dank. Wir pr&uuml;fen Ihren Fall und melden uns innerhalb von 48 Stunden.</p>
+        <a href="/" class="back-link">&larr; Zur&uuml;ck zur Startseite</a>
+    </div>
+
+    <footer>
+        <div class="footer-copy">&copy; 2026 VINDICO Claim Management UG (haftungsbeschr&auml;nkt)</div>
+        <div class="footer-links">
+            <a href="/impressum.html">Impressum</a>
+            <a href="/datenschutz.html">Datenschutz</a>
+            <a href="/agb.html">AGB</a>
+        </div>
+    </footer>
+
+</body>
+</html>
