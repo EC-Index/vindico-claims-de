@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Polnische Forderungen verkaufen &ndash; VINDICO Claim Management</title>
+    <meta name="description" content="Polnischer Kunde zahlt nicht? Wir kaufen Ihre Forderung. Sofortige Liquidit&auml;t, null Risiko. Kaufangebot innerhalb von 24 Stunden.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Source Sans 3', sans-serif; color: #2c2c2c; line-height: 1.7; -webkit-font-smoothing: antialiased; background: #f8f6f3; }
+
+        /* ========== VARIABLES ========== */
+        :root {
+            --navy: #0f1d35;
+            --navy-light: #162644;
+            --red: #c8102e;
+            --red-hover: #a30d24;
+            --warm: #f8f6f3;
+            --warm-alt: #f0ede8;
+            --text: #2c2c2c;
+            --text-dim: #6b7280;
+            --text-light: #9ca3af;
+            --white: #ffffff;
+            --border: #e5e2dd;
+        }
+
+        /* ========== TYPOGRAPHY ========== */
+        h1, h2, h3 { font-family: 'DM Serif Display', serif; font-weight: 400; line-height: 1.2; color: var(--navy); }
+        h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
+        h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+        h3 { font-size: 1.2rem; }
+        p { font-size: 1.05rem; color: var(--text-dim); }
+        a { color: var(--red); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* ========== NAVIGATION ========== */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            background: var(--white);
+            border-bottom: 1px solid transparent;
+            transition: box-shadow 0.3s, border-color 0.3s;
+        }
+        nav.scrolled {
+            box-shadow: 0 2px 20px rgba(15, 29, 53, 0.08);
+            border-bottom-color: var(--border);
+        }
+        .nav-logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem; font-weight: 400; color: var(--navy);
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--red); }
+        .nav-links { display: flex; align-items: center; gap: 2rem; }
+        .nav-links a {
+            font-size: 0.9rem; font-weight: 600; color: var(--text-dim);
+            text-decoration: none; transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--navy); text-decoration: none; }
+        .nav-cta {
+            background: var(--red); color: var(--white) !important;
+            padding: 0.6rem 1.4rem; border-radius: 6px;
+            font-weight: 700; font-size: 0.88rem;
+            transition: all 0.2s;
+        }
+        .nav-cta:hover { background: var(--red-hover); transform: translateY(-1px); color: var(--white) !important; text-decoration: none !important; }
+        .nav-hamburger {
+            display: none; background: none; border: none; cursor: pointer;
+            width: 28px; height: 20px; position: relative; flex-shrink: 0;
+        }
+        .nav-hamburger span {
+            display: block; width: 100%; height: 2px; background: var(--navy);
+            position: absolute; left: 0; transition: all 0.3s;
+        }
+        .nav-hamburger span:nth-child(1) { top: 0; }
+        .nav-hamburger span:nth-child(2) { top: 9px; }
+        .nav-hamburger span:nth-child(3) { top: 18px; }
+
+        /* ========== HERO ========== */
+        .hero {
+            background: var(--navy);
+            padding: 10rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; top: 50%; left: 50%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(200, 16, 46, 0.12) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+        .hero-inner { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(200, 16, 46, 0.12);
+            color: var(--red);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.82rem; font-weight: 700;
+            letter-spacing: 0.04em;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(200, 16, 46, 0.2);
+        }
+        .hero h1 { color: var(--white); margin-bottom: 1.2rem; }
+        .hero p { color: rgba(255, 255, 255, 0.7); font-size: 1.15rem; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--red); color: var(--white);
+            padding: 0.9rem 2rem; border-radius: 8px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight: 700; font-size: 1rem;
+            border: none; cursor: pointer;
+            transition: all 0.25s; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+        }
+        .btn-primary:hover { background: var(--red-hover); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200, 16, 46, 0.3); text-decoration: none; color: var(--white); }
+        .btn-secondary {
+            background: transparent; color: var(--white);
+            padding: 0.9rem 2rem; border-radius: 8px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight: 700; font-size: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3); cursor: pointer;
+            transition: all 0.25s; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+        }
+        .btn-secondary:hover { border-color: var(--white); background: rgba(255, 255, 255, 0.06); text-decoration: none; color: var(--white); }
+
+        /* ========== STATS BAR ========== */
+        .stats {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 3rem 2rem;
+        }
+        .stats-inner {
+            max-width: 900px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+            text-align: center;
+        }
+        .stat-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.8rem; color: var(--red); line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .stat-label { font-size: 0.9rem; color: var(--text-dim); font-weight: 600; }
+
+        /* ========== SECTION LAYOUT ========== */
+        section { padding: 6rem 2rem; }
+        .section-inner { max-width: 1000px; margin: 0 auto; }
+        .section-label {
+            font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.12em; color: var(--red); margin-bottom: 0.8rem;
+        }
+        .section-title { margin-bottom: 0.8rem; }
+        .section-subtitle { font-size: 1.05rem; color: var(--text-dim); margin-bottom: 3rem; max-width: 600px; }
+
+        /* ========== VORTEILE ========== */
+        .vorteile { background: var(--warm); }
+        .vorteile-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+        }
+        .vorteil-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.2rem;
+            transition: all 0.25s;
+        }
+        .vorteil-card:hover {
+            border-color: rgba(200, 16, 46, 0.2);
+            box-shadow: 0 8px 30px rgba(15, 29, 53, 0.06);
+            transform: translateY(-2px);
+        }
+        .vorteil-icon {
+            font-size: 2rem; margin-bottom: 1rem;
+            width: 56px; height: 56px;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(200, 16, 46, 0.06);
+            border-radius: 12px;
+        }
+        .vorteil-card h3 { margin-bottom: 0.6rem; color: var(--navy); }
+        .vorteil-card p { font-size: 0.95rem; margin: 0; }
+
+        /* ========== ABLAUF ========== */
+        .ablauf { background: var(--warm-alt); }
+        .ablauf-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+        }
+        .ablauf-step {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        .step-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem; color: rgba(200, 16, 46, 0.12);
+            line-height: 1; margin-bottom: 1rem;
+        }
+        .ablauf-step h3 { margin-bottom: 0.8rem; }
+        .ablauf-step p { font-size: 0.92rem; margin: 0; }
+
+        /* ========== KONTAKT ========== */
+        .kontakt { background: var(--navy); }
+        .kontakt .section-label { color: rgba(200, 16, 46, 0.8); }
+        .kontakt .section-title { color: var(--white); }
+        .kontakt .section-subtitle { color: rgba(255, 255, 255, 0.6); }
+        .form-container {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 720px;
+        }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .form-group label {
+            display: block; font-size: 0.82rem; font-weight: 700;
+            color: var(--navy); margin-bottom: 0.5rem;
+            text-transform: uppercase; letter-spacing: 0.04em;
+        }
+        .form-group label .required { color: var(--red); }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: var(--warm);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--red);
+            box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.1);
+        }
+        .form-group select {
+            appearance: none; -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-group.full { grid-column: 1 / -1; }
+
+        .consent-group { margin-top: 0.5rem; }
+        .checkbox-label {
+            display: flex; align-items: flex-start; gap: 0.7rem;
+            cursor: pointer; font-size: 0.85rem; color: var(--text-dim); line-height: 1.5;
+        }
+        .checkbox-label span { min-width: 0; }
+        .checkbox-label input[type="checkbox"] {
+            appearance: none; -webkit-appearance: none;
+            width: 20px; height: 20px; min-width: 20px;
+            border: 2px solid var(--border); border-radius: 4px;
+            background: var(--warm); cursor: pointer;
+            position: relative; margin-top: 2px;
+            transition: all 0.2s;
+        }
+        .checkbox-label input[type="checkbox"]:checked {
+            background: var(--red); border-color: var(--red);
+        }
+        .checkbox-label input[type="checkbox"]:checked::after {
+            content: '\2713'; position: absolute;
+            color: var(--white); font-size: 13px; font-weight: 700;
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+        }
+        .checkbox-label a { color: var(--red); text-decoration: underline; }
+
+        .submit-btn {
+            grid-column: 1 / -1;
+            background: var(--red); color: var(--white);
+            border: none; padding: 1rem 2rem;
+            border-radius: 8px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1rem; font-weight: 700;
+            cursor: pointer; transition: all 0.25s;
+            width: 100%;
+        }
+        .submit-btn:hover { background: var(--red-hover); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200, 16, 46, 0.25); }
+        .form-hint {
+            grid-column: 1 / -1;
+            text-align: center; font-size: 0.8rem;
+            color: var(--text-light); margin-top: 0.5rem;
+        }
+        .success-msg {
+            display: none; text-align: center; padding: 3rem 2rem;
+        }
+        .success-msg h3 { color: #16a34a; font-size: 1.6rem; margin-bottom: 1rem; }
+        .success-msg p { color: var(--text-dim); font-size: 1rem; }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--navy);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 4rem 2rem 2rem;
+        }
+        .footer-inner {
+            max-width: 1000px; margin: 0 auto;
+            display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
+        }
+        .footer-brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem; color: var(--white); margin-bottom: 0.8rem;
+        }
+        .footer-brand span { color: var(--red); }
+        .footer-desc { font-size: 0.9rem; color: rgba(255, 255, 255, 0.5); line-height: 1.6; }
+        .footer-heading { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255, 255, 255, 0.4); margin-bottom: 1rem; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.6rem; }
+        .footer-links a { color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; text-decoration: none; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--white); text-decoration: none; }
+        .footer-contact a { color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; text-decoration: none; display: block; margin-bottom: 0.5rem; }
+        .footer-contact a:hover { color: var(--white); }
+        .footer-bottom {
+            max-width: 1000px; margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+            font-size: 0.82rem; color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ========== MODALS ========== */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0; z-index: 1000;
+            background: rgba(15, 29, 53, 0.7);
+            backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+            justify-content: center; align-items: flex-start;
+            padding: 4rem 2rem;
+            overflow-y: auto;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal {
+            background: var(--white);
+            border-radius: 16px;
+            max-width: 680px; width: 100%;
+            padding: 3rem;
+            position: relative;
+            animation: modalIn 0.3s ease;
+        }
+        @keyframes modalIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .modal-close {
+            position: absolute; top: 1.2rem; right: 1.2rem;
+            background: var(--warm); border: none;
+            width: 36px; height: 36px; border-radius: 50%;
+            font-size: 1.2rem; color: var(--text-dim);
+            cursor: pointer; transition: all 0.2s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .modal-close:hover { background: var(--border); color: var(--navy); }
+        .modal h2 { font-size: 1.6rem; margin-bottom: 1.5rem; }
+        .modal h3 { font-size: 1.1rem; margin-top: 2rem; margin-bottom: 0.5rem; color: var(--navy); }
+        .modal p { font-size: 0.92rem; color: var(--text-dim); margin-bottom: 0.8rem; }
+        .modal ul { margin: 0.5rem 0 1rem 1.5rem; }
+        .modal li { font-size: 0.92rem; color: var(--text-dim); margin-bottom: 0.3rem; }
+
+        /* ========== COOKIE BANNER ========== */
+        .cookie-banner {
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+            background: var(--white);
+            border-top: 1px solid var(--border);
+            padding: 1rem 2rem;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.4s ease;
+        }
+        .cookie-banner.hidden { transform: translateY(100%); pointer-events: none; }
+        .cookie-inner {
+            max-width: 1000px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;
+        }
+        .cookie-inner p { font-size: 0.85rem; color: var(--text-dim); margin: 0; }
+        .cookie-inner a { color: var(--red); text-decoration: underline; }
+        .cookie-btn {
+            background: var(--navy); color: var(--white);
+            padding: 0.5rem 1.4rem; border-radius: 6px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.85rem; font-weight: 700;
+            border: none; cursor: pointer; white-space: nowrap;
+            transition: all 0.2s;
+        }
+        .cookie-btn:hover { background: var(--navy-light); }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            nav { padding: 0.8rem 1.2rem; }
+            .nav-links { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--white); flex-direction: column; justify-content: center; align-items: center; gap: 2rem; z-index: 99; }
+            .nav-links.open { display: flex; }
+            .nav-links a { font-size: 1.2rem; }
+            .nav-hamburger { display: block; z-index: 101; }
+            .hero { padding: 8rem 1.5rem 4rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .stats-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+            .stat-number { font-size: 2.2rem; }
+            section { padding: 4rem 1.5rem; }
+            .vorteile-grid { grid-template-columns: 1fr; }
+            .ablauf-grid { grid-template-columns: 1fr; }
+            .form-container { padding: 2rem 1.5rem; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full { grid-column: 1; }
+            .submit-btn { grid-column: 1; }
+            .form-hint { grid-column: 1; }
+            .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+            .cookie-inner { flex-direction: column; text-align: center; }
+            .modal { padding: 2rem 1.5rem; margin: 1rem; }
+        }
+        @media (max-width: 380px) {
+            .hero h1 { font-size: 1.7rem; }
+            .nav-logo { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========== NAVIGATION ========== -->
+<nav id="navbar">
+    <a href="#" class="nav-logo">VINDICO<span>.</span></a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Men&uuml; &ouml;ffnen">
+        <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+        <a href="#vorteile">Vorteile</a>
+        <a href="#ablauf">Ablauf</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="#kontakt" class="nav-cta">Forderung einreichen &rarr;</a>
+    </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-badge">Forderungskauf &middot; Deutsch-Polnisch</div>
+        <h1>Polnischer Kunde zahlt nicht? Wir kaufen Ihre Forderung.</h1>
+        <p>Sofortige Liquidit&auml;t, null Risiko. Sie senden uns die Unterlagen &ndash; wir machen Ihnen innerhalb von 24&nbsp;Stunden ein verbindliches Kaufangebot.</p>
+        <div class="hero-buttons">
+            <a href="#kontakt" class="btn-primary">Jetzt Forderung einreichen &rarr;</a>
+            <a href="#ablauf" class="btn-secondary">So funktioniert&rsquo;s</a>
+        </div>
+    </div>
+</section>
+
+<!-- ========== STATS ========== -->
+<div class="stats">
+    <div class="stats-inner">
+        <div>
+            <div class="stat-number">99 %</div>
+            <div class="stat-label">der polnischen Firmen zahlen versp&auml;tet</div>
+        </div>
+        <div>
+            <div class="stat-number">140</div>
+            <div class="stat-label">Tage Zahlungsverzug im Transportsektor</div>
+        </div>
+        <div>
+            <div class="stat-number">24h</div>
+            <div class="stat-label">bis zu Ihrem Kaufangebot</div>
+        </div>
+    </div>
+</div>
+
+<!-- ========== VORTEILE ========== -->
+<section class="vorteile" id="vorteile">
+    <div class="section-inner">
+        <div class="section-label">Ihre Vorteile</div>
+        <h2 class="section-title">Warum Unternehmen ihre Polen-Forderungen an uns verkaufen</h2>
+        <p class="section-subtitle">Kein Provisionsmodell. Kein Inkasso. Wir kaufen Ihre Forderung &ndash; endg&uuml;ltig.</p>
+
+        <div class="vorteile-grid">
+            <div class="vorteil-card">
+                <div class="vorteil-icon">&#128182;</div>
+                <h3>Sofortige Auszahlung</h3>
+                <p>Kaufpreis innerhalb weniger Tage auf Ihrem Konto. Kein monatelanges Warten auf Zahlungseing&auml;nge.</p>
+            </div>
+            <div class="vorteil-card">
+                <div class="vorteil-icon">&#128737;&#65039;</div>
+                <h3>Null Ausfallrisiko</h3>
+                <p>Ab Kaufvertrag tragen wir das komplette Risiko. Keine R&uuml;ckforderungen, keine Nachverhandlungen.</p>
+            </div>
+            <div class="vorteil-card">
+                <div class="vorteil-icon">&#127477;&#127473;</div>
+                <h3>Polnisch? Kein Problem.</h3>
+                <p>Wir kennen das polnische Rechtssystem, sprechen die Sprache und setzen Forderungen vor polnischen Gerichten durch.</p>
+            </div>
+            <div class="vorteil-card">
+                <div class="vorteil-icon">&#128202;</div>
+                <h3>Saubere B&uuml;cher</h3>
+                <p>Die Forderung verl&auml;sst Ihre Bilanz. Kein Wertberichtigungsbedarf, kein offener Posten.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== ABLAUF ========== -->
+<section class="ablauf" id="ablauf">
+    <div class="section-inner">
+        <div class="section-label">In 3 Schritten</div>
+        <h2 class="section-title">So einfach funktioniert der Forderungsverkauf</h2>
+        <p class="section-subtitle">&nbsp;</p>
+
+        <div class="ablauf-grid">
+            <div class="ablauf-step">
+                <div class="step-number">01</div>
+                <h3>Unterlagen senden</h3>
+                <p>Rechnung, Vertrag und ggf. Korrespondenz &uuml;ber unser Kontaktformular oder per E-Mail.</p>
+            </div>
+            <div class="ablauf-step">
+                <div class="step-number">02</div>
+                <h3>Angebot erhalten</h3>
+                <p>Pr&uuml;fung und verbindliches Kaufangebot innerhalb von 24&nbsp;Stunden.</p>
+            </div>
+            <div class="ablauf-step">
+                <div class="step-number">03</div>
+                <h3>Geld erhalten</h3>
+                <p>Nach Vertragsschluss erhalten Sie den Kaufpreis. Die Forderung geh&ouml;rt uns.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== KONTAKT ========== -->
+<section class="kontakt" id="kontakt">
+    <div class="section-inner">
+        <div class="section-label">Kontakt</div>
+        <h2 class="section-title">Forderung einreichen</h2>
+        <p class="section-subtitle">Beschreiben Sie Ihren Fall &ndash; wir melden uns innerhalb eines Werktages.</p>
+
+        <div class="form-container">
+            <!-- TODO: Formular-Backend anbinden (Formspree, Netlify Forms o.&auml;.) -->
+            <form id="kontakt-form" class="form-grid">
+
+                <div class="form-group">
+                    <label for="firma">Firma <span class="required">*</span></label>
+                    <input type="text" id="firma" name="Firma" placeholder="Ihr Unternehmen" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ansprechpartner">Ansprechpartner <span class="required">*</span></label>
+                    <input type="text" id="ansprechpartner" name="Ansprechpartner" placeholder="Vor- und Nachname" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-Mail <span class="required">*</span></label>
+                    <input type="email" id="email" name="Email" placeholder="ihre@firma.de" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefon">Telefon</label>
+                    <input type="tel" id="telefon" name="Telefon" placeholder="+49 ...">
+                </div>
+
+                <div class="form-group">
+                    <label for="forderungshoehe">Forderungsh&ouml;he ca.</label>
+                    <select id="forderungshoehe" name="Forderungshoehe">
+                        <option value="" disabled selected>Bitte w&auml;hlen</option>
+                        <option value="Unter 1.000 EUR">Unter 1.000 &euro;</option>
+                        <option value="1.000-5.000 EUR">1.000 &ndash; 5.000 &euro;</option>
+                        <option value="5.000-20.000 EUR">5.000 &ndash; 20.000 &euro;</option>
+                        <option value="20.000-50.000 EUR">20.000 &ndash; 50.000 &euro;</option>
+                        <option value="Ueber 50.000 EUR">&Uuml;ber 50.000 &euro;</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="branche">Branche</label>
+                    <select id="branche" name="Branche">
+                        <option value="" disabled selected>Bitte w&auml;hlen</option>
+                        <option value="Transport/Spedition">Transport / Spedition</option>
+                        <option value="Bau/Bauzulieferer">Bau / Bauzulieferer</option>
+                        <option value="Gross-/Einzelhandel">Gro&szlig;- / Einzelhandel</option>
+                        <option value="Industrie/Produktion">Industrie / Produktion</option>
+                        <option value="Dienstleistung">Dienstleistung</option>
+                        <option value="Sonstige">Sonstige</option>
+                    </select>
+                </div>
+
+                <div class="form-group full">
+                    <label for="beschreibung">Beschreibung der Forderung <span class="required">*</span></label>
+                    <textarea id="beschreibung" name="Beschreibung" placeholder="Kurze Beschreibung: Worum geht es? Seit wann ist die Forderung offen? Gibt es bisherige Korrespondenz mit dem Schuldner?" required></textarea>
+                </div>
+
+                <div class="form-group full consent-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="consent" name="Einwilligung" value="Ja" required>
+                        <span>Ich habe die <a href="#" onclick="openModal('datenschutz-modal'); return false;">Datenschutzerkl&auml;rung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu. Meine Daten werden ausschlie&szlig;lich zur Kontaktaufnahme und Angebotserstellung verwendet und nicht an Dritte weitergegeben.</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn">Anfrage absenden &rarr;</button>
+                <p class="form-hint">* Pflichtfelder &middot; Ihre Daten werden verschl&uuml;sselt &uuml;bertragen und vertraulich behandelt.</p>
+            </form>
+
+            <div class="success-msg" id="success">
+                <h3>&#10003; Anfrage erhalten!</h3>
+                <p>Vielen Dank. Wir melden uns innerhalb eines Werktages bei Ihnen.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+    <div class="footer-inner">
+        <div>
+            <div class="footer-brand">VINDICO<span>.</span></div>
+            <p class="footer-desc">Wir kaufen strittige Forderungen gegen polnische Unternehmen. Sofortige Liquidit&auml;t, null Ausfallrisiko.</p>
+        </div>
+        <div>
+            <div class="footer-heading">Kontakt</div>
+            <div class="footer-contact">
+                <a href="mailto:info@vindico-claims.de">info@vindico-claims.de</a>
+                <a href="tel:+4954339145172">+49 5433 9145172</a>
+            </div>
+        </div>
+        <div>
+            <div class="footer-heading">Rechtliches</div>
+            <ul class="footer-links">
+                <li><a href="#" onclick="openModal('impressum-modal'); return false;">Impressum</a></li>
+                <li><a href="#" onclick="openModal('datenschutz-modal'); return false;">Datenschutz</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 VINDICO Claim Management UG (haftungsbeschr&auml;nkt). Alle Rechte vorbehalten.
+    </div>
+</footer>
+
+<!-- ========== COOKIE BANNER ========== -->
+<div class="cookie-banner" id="cookie-banner">
+    <div class="cookie-inner">
+        <p>Diese Website verwendet nur technisch notwendige Cookies. Weitere Informationen in unserer <a href="#" onclick="openModal('datenschutz-modal'); return false;">Datenschutzerkl&auml;rung</a>.</p>
+        <button class="cookie-btn" onclick="closeCookieBanner()">Verstanden</button>
+    </div>
+</div>
+
+<!-- ========== IMPRESSUM MODAL ========== -->
+<div class="modal-overlay" id="impressum-modal">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal('impressum-modal')">&times;</button>
+        <h2>Impressum</h2>
+
+        <h3>Angaben gem&auml;&szlig; &sect; 5 TMG</h3>
+        <p>
+            VINDICO Claim Management UG (haftungsbeschr&auml;nkt)<br>
+            Hauptstr. 54<br>
+            49635 Badbergen
+        </p>
+
+        <h3>Vertreten durch</h3>
+        <p>Gesch&auml;ftsf&uuml;hrer: Thomas Kiene</p>
+
+        <h3>Kontakt</h3>
+        <p>
+            Telefon: +49 5433 9145172<br>
+            E-Mail: info@vindico-claims.de
+        </p>
+
+        <h3>Verantwortlich f&uuml;r den Inhalt nach &sect; 18 Abs. 2 MStV</h3>
+        <p>Thomas Kiene<br>Hauptstr. 54<br>49635 Badbergen</p>
+
+        <h3>EU-Streitschlichtung</h3>
+        <p>Die Europ&auml;ische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a></p>
+        <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+    </div>
+</div>
+
+<!-- ========== DATENSCHUTZ MODAL ========== -->
+<div class="modal-overlay" id="datenschutz-modal">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal('datenschutz-modal')">&times;</button>
+        <h2>Datenschutzerkl&auml;rung</h2>
+        <p><em>Stand: Februar 2026</em></p>
+
+        <h3>1. Verantwortlicher</h3>
+        <p>
+            VINDICO Claim Management UG (haftungsbeschr&auml;nkt)<br>
+            Hauptstr. 54, 49635 Badbergen<br>
+            E-Mail: info@vindico-claims.de<br>
+            Telefon: +49 5433 9145172
+        </p>
+
+        <h3>2. Erhebung personenbezogener Daten beim Websitebesuch</h3>
+        <p>Bei jedem Zugriff auf diese Website werden automatisch folgende Daten erhoben und in Server-Logfiles gespeichert:</p>
+        <ul>
+            <li>Anonymisierte IP-Adresse</li>
+            <li>Datum und Uhrzeit des Zugriffs</li>
+            <li>Aufgerufene Seite / URL</li>
+            <li>Browser-Typ und -Version</li>
+            <li>Betriebssystem</li>
+            <li>Referrer-URL</li>
+        </ul>
+        <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der technischen Bereitstellung und Sicherheit der Website). Die Daten werden nicht mit anderen Datenquellen zusammengef&uuml;hrt.</p>
+
+        <h3>3. Kontaktformular</h3>
+        <p>Wenn Sie unser Kontaktformular nutzen, erheben wir folgende Daten:</p>
+        <ul>
+            <li>Firma, Ansprechpartner, E-Mail-Adresse (Pflichtfelder)</li>
+            <li>Telefonnummer, Forderungsh&ouml;he, Branche, Beschreibung (freiwillig)</li>
+        </ul>
+        <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) sowie Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Ma&szlig;nahmen). Ihre Daten werden ausschlie&szlig;lich zur Bearbeitung Ihrer Anfrage und ggf. zur Angebotserstellung verwendet.</p>
+        <p>Speicherdauer: Ihre Daten werden nach abschlie&szlig;ender Bearbeitung Ihrer Anfrage gel&ouml;scht, sofern keine gesetzlichen Aufbewahrungspflichten bestehen (bis zu 10 Jahre gem&auml;&szlig; HGB/AO).</p>
+
+        <h3>4. Cookies</h3>
+        <p>Diese Website verwendet ausschlie&szlig;lich technisch notwendige Cookies (z.&nbsp;B. zur Speicherung Ihrer Cookie-Banner-Einstellung). Es werden keine Tracking-, Analyse- oder Marketing-Cookies eingesetzt.</p>
+        <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der technischen Funktionsf&auml;higkeit).</p>
+
+        <h3>5. Betroffenenrechte</h3>
+        <p>Sie haben das Recht auf:</p>
+        <ul>
+            <li>Auskunft &uuml;ber Ihre gespeicherten Daten (Art. 15 DSGVO)</li>
+            <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
+            <li>L&ouml;schung Ihrer Daten (Art. 17 DSGVO)</li>
+            <li>Einschr&auml;nkung der Verarbeitung (Art. 18 DSGVO)</li>
+            <li>Daten&uuml;bertragbarkeit (Art. 20 DSGVO)</li>
+            <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
+            <li>Widerruf Ihrer Einwilligung jederzeit mit Wirkung f&uuml;r die Zukunft (Art. 7 Abs. 3 DSGVO)</li>
+        </ul>
+
+        <h3>6. Beschwerderecht bei der Aufsichtsbeh&ouml;rde</h3>
+        <p>
+            Die Landesbeauftragte f&uuml;r den Datenschutz Niedersachsen<br>
+            Prinzenstra&szlig;e 5, 30159 Hannover<br>
+            Telefon: +49 511 120-4500<br>
+            E-Mail: poststelle@lfd.niedersachsen.de
+        </p>
+
+        <h3>7. SSL-Verschl&uuml;sselung</h3>
+        <p>Diese Website nutzt aus Sicherheitsgr&uuml;nden eine SSL- bzw. TLS-Verschl&uuml;sselung. Dadurch werden Daten, die Sie an uns &uuml;bermitteln, verschl&uuml;sselt &uuml;bertragen und k&ouml;nnen nicht von Dritten mitgelesen werden.</p>
+    </div>
+</div>
+
+<!-- ========== JAVASCRIPT ========== -->
+<script>
+    // === NAV SCROLL SHADOW ===
+    window.addEventListener('scroll', function() {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // === HAMBURGER MENU ===
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', function() {
+        navLinks.classList.toggle('open');
+    });
+    // Close mobile nav on link click
+    navLinks.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+            navLinks.classList.remove('open');
+        });
+    });
+
+    // === MODALS ===
+    function openModal(id) {
+        document.getElementById(id).classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal(id) {
+        document.getElementById(id).classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    // Close on overlay click
+    document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.modal-overlay.active').forEach(function(m) {
+                m.classList.remove('active');
+            });
+            document.body.style.overflow = '';
+        }
+    });
+
+    // === COOKIE BANNER ===
+    function closeCookieBanner() {
+        localStorage.setItem('vindico-cookies-accepted', 'true');
+        document.getElementById('cookie-banner').classList.add('hidden');
+    }
+    if (localStorage.getItem('vindico-cookies-accepted') === 'true') {
+        document.getElementById('cookie-banner').classList.add('hidden');
+    }
+
+    // === FORM SUBMIT ===
+    var form = document.getElementById('kontakt-form');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var btn = form.querySelector('.submit-btn');
+            btn.textContent = 'Wird gesendet\u2026';
+            btn.disabled = true;
+
+            // TODO: Backend-Anbindung (Formspree, Netlify Forms, etc.)
+            // Simulation: Nach 1s Erfolgsmeldung zeigen
+            setTimeout(function() {
+                form.style.display = 'none';
+                document.getElementById('success').style.display = 'block';
+            }, 1000);
+        });
+    }
+</script>
+</body>
+</html>
